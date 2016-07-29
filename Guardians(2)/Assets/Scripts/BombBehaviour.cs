@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BombBehaviour : MonoBehaviour {
 
+    public int actualScore = 10;
+    
 	//acessa componentes
 
 
@@ -26,10 +28,12 @@ public class BombBehaviour : MonoBehaviour {
 		{
 			Destroy (c.gameObject);
 			Destroy (gameObject);
+            
 		} 
 		else if (c.gameObject.tag == gameObject.tag)
 		{
 			Destroy (gameObject);
-		}
+            ScoreManager.score += actualScore;
+        }
 	} 
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -13,11 +14,12 @@ public class GameManager : MonoBehaviour {
 	public GameObject[] bombPrefab;
 
 	private int selectedSpawn;
-	private int selectedBomb;
+    private int selectedBomb;
 
 	void Start () 
 	{
 		spawnTimer = 0;
+        ScoreManager.score = 0;
 	}
 	
 	// Update is called once per frame
@@ -31,5 +33,6 @@ public class GameManager : MonoBehaviour {
 			Instantiate (bombPrefab[selectedBomb], spawn [selectedSpawn].position, spawn [selectedSpawn].rotation);
 			spawnTimer = 0;
 		} 
+
 	}
 }
