@@ -4,25 +4,25 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int score;        // The player's score.
+    public static int score;        // A pontuacao do jogador.
 
 
-    Text text;                      // Reference to the Text component.
+    private Text text;                      // Referencia ao texto.
 
 
-    void Awake()
+    void Start()
     {
-        // Set up the reference.
+        // Cria a referencia.
         text = GetComponent<Text>();
 
-        // Reset the score.
+        // Zera a pontuacao.
         score = 0;
     }
 
 
     void Update()
     {
-        // Set the displayed text to be the word "Score" followed by the score value.
+        // Define o texto exibido como Score: mais a pontuacao atual.
         text.text = "Score: " + score;
     }
 }
