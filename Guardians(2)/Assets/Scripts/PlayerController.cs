@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour {
 	private float yMin = -4f;
 	private float yMax = 4f;
 
+	//vida
+	private int life;
+
 	//acessa componentes
 	private Rigidbody2D rb;
 
@@ -21,11 +24,16 @@ public class PlayerController : MonoBehaviour {
 		verticalSpeed = 0.13f;
 		horizontalSpeed = 0.15f;
 		rb = GetComponent<Rigidbody2D> ();
+		life = 5;
 	}
 	
 
 	void FixedUpdate () 
 	{
+		if (life == 0) 
+		{
+			Destroy (gameObject);
+		}
 		MovementControl ();
 		rb.position = new Vector3 (Mathf.Clamp (rb.position.x, xMin, xMax), Mathf.Clamp (rb.position.y, yMin, yMax), 0f);
 	}
@@ -48,5 +56,10 @@ public class PlayerController : MonoBehaviour {
 		{
 			transform.Translate (0f, -verticalSpeed, 0f);
 		}
+	}
+
+	public void SubtractLife()
+	{
+		life--;
 	}
 }

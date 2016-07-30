@@ -6,11 +6,15 @@ public class BombBehaviour : MonoBehaviour {
     public int actualScore = 10;
     
 	//acessa componentes
-
+	private ScoreManager score;
+	private CoreBehaviour core;
+	private PlayerController player;
 
 	void Start()
 	{
-		
+		core = FindObjectOfType (typeof(CoreBehaviour)) as CoreBehaviour;
+		player = FindObjectOfType (typeof(PlayerController)) as PlayerController;
+		score = FindObjectOfType (typeof(ScoreManager)) as ScoreManager;
 	}
 
 	void Update () 
@@ -26,14 +30,20 @@ public class BombBehaviour : MonoBehaviour {
 	{
 		if (c.gameObject.tag == "pickup") 
 		{
-			Destroy (c.gameObject);
+			c.GetComponent<CoreBehaviour>().SubtractLife ();
 			Destroy (gameObject);
             
 		} 
 		else if (c.gameObject.tag == gameObject.tag)
 		{
 			Destroy (gameObject);
-            ScoreManager.score += actualScore;
+			score.AddScore();
         }
 	} 
+
+	void OnCollisionEnter2D (Collision2D c)
+	{
+		c.gameObject.GetComponent<PlayerController> ().SubtractLife ();
+		Destroy (gameObject);
+	}
 }
