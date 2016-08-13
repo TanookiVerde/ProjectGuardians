@@ -14,23 +14,36 @@ public class PlayerController : MonoBehaviour {
 	private float yMax = 4f;
 
 	//vida
-	private int life;
+	public int life;
 
 	//acessa componentes
 	private Rigidbody2D rb;
 
-	void Start () 
+    private float timeElapsed;
+    private bool special;
+
+    void Start () 
 	{
 		verticalSpeed = 0.13f;
 		horizontalSpeed = 0.15f;
 		rb = GetComponent<Rigidbody2D> ();
 		life = 5;
+        timeElapsed = 0;
+        special = false;
 	}
 	
 
 	void FixedUpdate () 
 	{
-		if (life == 0) 
+        if (special)
+        {
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed > 5)
+            {
+                SpeedDown();
+            }
+        }
+        if (life == 0) 
 		{
 			Destroy (gameObject);
 		}
@@ -62,4 +75,22 @@ public class PlayerController : MonoBehaviour {
 	{
 		life--;
 	}
+
+    public void RestoreLife() {
+        if (life != 5) {
+            life = 5;
+        }
+    }
+
+    public void SpeedUp() {
+        special = true;
+        verticalSpeed += 0.2f;
+        horizontalSpeed += 0.2f;
+    }
+
+    public void SpeedDown() {
+        verticalSpeed -= 0.2f;
+        horizontalSpeed -= 0.2f;
+        special = false;
+    }
 }

@@ -6,7 +6,7 @@ public class BombBehaviour : MonoBehaviour {
     public int actualScore = 10;
     
 	//acessa componentes
-	private ScoreManager score;
+	private ScoreManager scorem;
 	private CoreBehaviour core;
 	private PlayerController player;
 
@@ -14,7 +14,6 @@ public class BombBehaviour : MonoBehaviour {
 	{
 		core = FindObjectOfType (typeof(CoreBehaviour)) as CoreBehaviour;
 		player = FindObjectOfType (typeof(PlayerController)) as PlayerController;
-		score = FindObjectOfType (typeof(ScoreManager)) as ScoreManager;
 	}
 
 	void Update () 
@@ -28,16 +27,35 @@ public class BombBehaviour : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D c)
 	{
-		if (c.gameObject.tag == "pickup") 
+        switch(c.gameObject.tag) {
+            case "Core1":
+                c.GetComponent<CoreBehaviour>().SubtractLife();
+                Destroy(gameObject);
+                break;
+            case "Core2":
+                c.GetComponent<CoreBehaviour>().SubtractLife();
+                Destroy(gameObject);
+                break;
+            case "Core3":
+                c.GetComponent<CoreBehaviour>().SubtractLife();
+                Destroy(gameObject);
+                break;
+            case "Core4":
+                c.GetComponent<CoreBehaviour>().SubtractLife();
+                Destroy(gameObject);
+                break;
+            case "Core5":
+                c.GetComponent<CoreBehaviour>().SubtractLife();
+                Destroy(gameObject);
+                break;
+            default:
+                break;
+
+        }
+		if (c.gameObject.tag == gameObject.tag || c.gameObject.tag == "Omni")
 		{
-			c.GetComponent<CoreBehaviour>().SubtractLife ();
 			Destroy (gameObject);
-            
-		} 
-		else if (c.gameObject.tag == gameObject.tag)
-		{
-			Destroy (gameObject);
-			score.AddScore();
+            ScoreManager.score += 10;
         }
 	} 
 

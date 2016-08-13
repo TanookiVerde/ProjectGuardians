@@ -6,13 +6,13 @@ public class ScoreManager : MonoBehaviour
 {
     public static int score;        // A pontuacao do jogador.
 
-    private Text text;                      // Referencia ao texto.
+    private Text textdisplay;                      // Referencia ao texto.
 
 
     void Start()
     {
         // Cria a referencia.
-        text = GetComponent<Text>();
+        textdisplay = GetComponent<Text>();
 
         // Zera a pontuacao.
         score = 0;
@@ -21,11 +21,6 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-		text.text = "Score: " + score;
+		textdisplay.text = "Score: " + score;
     }
-
-	public void AddScore()
-	{
-		score += 10;
-	}
 }
