@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 public class CoreBehaviour : MonoBehaviour {
 
 	public int life;
-    public PoweUpHandler pu;
 
 	void Start()
 	{
-        pu = FindObjectOfType(typeof(PoweUpHandler)) as PoweUpHandler;
         life = 2;
 	}
     

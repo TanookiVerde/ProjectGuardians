@@ -2,26 +2,47 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PoweUpHandler : MonoBehaviour {
+public class PoweUpHandler : MonoBehaviour
+{
+    public GameObject[] PowerUps;
+    private bool[] State = { true, true, true, true, true };
+    int SelectedPowerUp;
+    private float xMin = -6.75f;
+    private float xMax = 7.6f;
+    private float yMin = -4f;
+    private float yMax = 4f;
+    private float posX, posY;
+    public bool generated;
 
-
-    //private List>bool
-    public bool[] Core = new bool[] { true, true, true, true, true };
-    int e;
-    public GameObject[] PwUps;
-	// Update is called once per frame
-	void Update () {
-        e = Random.Range(1, 5);
-        if(Core[e] == true) {
-            PowerUp(e);
-        }
-
+    void Start() {
+        generated = false;
     }
+
+    void Update() {
+        if(ScoreManager.score % 100 == 0 && ScoreManager.score != 0 && !generated) {
+            generated = true;
+            GeneratePU();
+        }
+    }
+
 
     public void Break(int i) {
-        Core[i] = false;
+        State[i] = false;
     }
-    public void PowerUp(int i) {
-        Instantiate(PwUps[i]);
+
+    public void GeneratePU() {
+        SelectedPowerUp = Random.Range(0, 5);
+        if (State[SelectedPowerUp] == false)
+        {
+           if(State[0] || State[1] || State[2] || State[3] || State[4])
+            GeneratePU();
+        }
+        else
+        {
+            posX = Random.Range(xMax, xMin);
+            posY = Random.Range(yMax, yMin);
+
+            Instantiate(PowerUps[SelectedPowerUp], new Vector3(posX, posY, 0), Quaternion.identity);
+        }
     }
 }

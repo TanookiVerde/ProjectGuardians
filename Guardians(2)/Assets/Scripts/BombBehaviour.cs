@@ -9,11 +9,13 @@ public class BombBehaviour : MonoBehaviour {
 	private ScoreManager scorem;
 	private CoreBehaviour core;
 	private PlayerController player;
+    private PoweUpHandler pu;
 
 	void Start()
 	{
 		core = FindObjectOfType (typeof(CoreBehaviour)) as CoreBehaviour;
 		player = FindObjectOfType (typeof(PlayerController)) as PlayerController;
+        pu = FindObjectOfType (typeof(PoweUpHandler)) as PoweUpHandler;
 	}
 
 	void Update () 
@@ -29,22 +31,32 @@ public class BombBehaviour : MonoBehaviour {
 	{
         switch(c.gameObject.tag) {
             case "Core1":
+                pu.Break(0);
+                pu.generated = false;
                 c.GetComponent<CoreBehaviour>().SubtractLife();
                 Destroy(gameObject);
                 break;
             case "Core2":
+                pu.Break(1);
+                pu.generated = false;
                 c.GetComponent<CoreBehaviour>().SubtractLife();
                 Destroy(gameObject);
                 break;
             case "Core3":
+                pu.Break(2);
+                pu.generated = false;
                 c.GetComponent<CoreBehaviour>().SubtractLife();
                 Destroy(gameObject);
                 break;
             case "Core4":
+                pu.Break(3);
+                pu.generated = false;
                 c.GetComponent<CoreBehaviour>().SubtractLife();
                 Destroy(gameObject);
                 break;
             case "Core5":
+                pu.Break(4);
+                pu.generated = false;
                 c.GetComponent<CoreBehaviour>().SubtractLife();
                 Destroy(gameObject);
                 break;
@@ -54,14 +66,18 @@ public class BombBehaviour : MonoBehaviour {
         }
 		if (c.gameObject.tag == gameObject.tag || c.gameObject.tag == "Omni")
 		{
-			Destroy (gameObject);
+            pu.generated = false;
+            Destroy (gameObject);
             ScoreManager.score += 10;
         }
 	} 
 
 	void OnCollisionEnter2D (Collision2D c)
 	{
-		c.gameObject.GetComponent<PlayerController> ().SubtractLife ();
-		Destroy (gameObject);
+        if (c.gameObject.name == "player")
+        {
+            c.gameObject.GetComponent<PlayerController>().SubtractLife();
+            Destroy(gameObject);
+        }
 	}
 }
