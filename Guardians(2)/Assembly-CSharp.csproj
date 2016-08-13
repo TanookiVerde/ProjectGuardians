@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Restart.cs" />
      <Compile Include="Assets\Scripts\BombBehaviour.cs" />
      <Compile Include="Assets\Scripts\CoreBehaviour.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />

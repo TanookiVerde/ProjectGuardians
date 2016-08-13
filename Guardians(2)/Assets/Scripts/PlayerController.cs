@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (life == 0) 
 		{
-			Destroy (gameObject);
+            SceneManager.LoadScene("GameOver");
 		}
 		MovementControl ();
 		rb.position = new Vector3 (Mathf.Clamp (rb.position.x, xMin, xMax), Mathf.Clamp (rb.position.y, yMin, yMax), 0f);
