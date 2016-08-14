@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start () 
 	{
-		verticalSpeed = 0.13f;
-		horizontalSpeed = 0.15f;
+		verticalSpeed = 0.16f;
+		horizontalSpeed = 0.18f;
 		rb = GetComponent<Rigidbody2D> ();
 		life = 5;
         timeElapsed = 0;
