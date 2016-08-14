@@ -63,16 +63,16 @@ public class ShieldColor : MonoBehaviour {
 
 	private void ColorChange()
 	{
-		if (Input.GetKey (KeyCode.Alpha1)) {
+		if (Input.GetKey (KeyCode.J)) {
 			shieldColor = ShieldColorState.RED;
 		}
-		if (Input.GetKey (KeyCode.Alpha2)) {
+		if (Input.GetKey (KeyCode.K)) {
 			shieldColor = ShieldColorState.GREEN;
 		}
-		if (Input.GetKey (KeyCode.Alpha3)) {
+		if (Input.GetKey (KeyCode.L)) {
 			shieldColor = ShieldColorState.BLUE;
 		}
-        if (Input.GetKey(KeyCode.Alpha4)) {
+        if (Input.GetKey(KeyCode.O)) {
             shieldColor = ShieldColorState.OMNI;
         }
     }
