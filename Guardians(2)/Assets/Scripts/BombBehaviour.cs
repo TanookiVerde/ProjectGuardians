@@ -6,6 +6,7 @@ public class BombBehaviour : MonoBehaviour {
     public int actualScore = 10;
     
 	//acessa componentes
+	private GameManager gm;
 	private ScoreManager scorem;
 	private CoreBehaviour core;
 	private PlayerController player;
@@ -16,6 +17,7 @@ public class BombBehaviour : MonoBehaviour {
 		core = FindObjectOfType (typeof(CoreBehaviour)) as CoreBehaviour;
 		player = FindObjectOfType (typeof(PlayerController)) as PlayerController;
         pu = FindObjectOfType (typeof(PoweUpHandler)) as PoweUpHandler;
+		gm = FindObjectOfType (typeof(GameManager)) as GameManager;
 	}
 
 	void Update () 
@@ -69,6 +71,7 @@ public class BombBehaviour : MonoBehaviour {
             pu.generated = false;
             Destroy (gameObject);
             ScoreManager.score += 10;
+			gm.IncreaseBombCounter ();
         }
 	} 
 
