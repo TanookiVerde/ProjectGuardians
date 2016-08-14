@@ -7,10 +7,10 @@ public class PoweUpHandler : MonoBehaviour
     public GameObject[] PowerUps;
     private bool[] State = { true, true, true, true, true };
     int SelectedPowerUp;
-    private float xMin = -6.75f;
-    private float xMax = 7.6f;
-    private float yMin = -4f;
-    private float yMax = 4f;
+    private float xMin = -6.5f;
+    private float xMax = 7.35f;
+    private float yMin = -3.5f;
+    private float yMax = 3.5f;
     private float posX, posY;
     public bool generated;
 
