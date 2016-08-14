@@ -54,7 +54,10 @@ public class PlayerController : MonoBehaviour {
 
 	private void MovementControl()
 	{
-		if(Input.GetKey(KeyCode.D))
+        float hDirection = Input.GetAxis("Horizontal") * horizontalSpeed;
+        float vDirection = Input.GetAxis("Vertical") * verticalSpeed;
+        transform.Translate(hDirection, vDirection, 0);
+		/*if(Input.GetKey(KeyCode.D))
 		{
 			transform.Translate (horizontalSpeed, 0f, 0f);
 		}
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetKey(KeyCode.S))
 		{
 			transform.Translate (0f, -verticalSpeed, 0f);
-		}
+		}*/
 	}
 
 	public void SubtractLife()
