@@ -13,10 +13,19 @@ public class CoreBehaviour : MonoBehaviour {
     
     void Update()
     {
-        if (life == 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        switch(life) {
+            case 0:
+                SceneManager.LoadScene("GameOver");
+                break;
+            case 1:
+                transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            case 2:
+                transform.GetChild(0).gameObject.SetActive(false);
+                break;
+            default:
+                break;
+        }        
     }
 
 	public void SubtractLife()

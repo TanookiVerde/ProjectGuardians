@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BombBehaviourChild.cs" />
+     <Compile Include="Assets\PlayAudio.cs" />
      <Compile Include="Assets\Scripts\BombBehaviour.cs" />
      <Compile Include="Assets\Scripts\CoreBehaviour.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />

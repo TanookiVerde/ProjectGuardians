@@ -21,11 +21,11 @@ public class ShieldSize : MonoBehaviour {
     public void IncreaseSize()
     {
         timeElapsed = 0;
-        gameObject.transform.localScale += new Vector3(0, 0.5F, 0);
+        gameObject.transform.localScale += new Vector3(0, 0.2F, 0);
         collided = true;
     }
     public void DecreaseSize() {
-        gameObject.transform.localScale -= new Vector3(0, 0.5F, 0);
+        gameObject.transform.localScale -= new Vector3(0, 0.2F, 0);
         collided = false;
     }
 }
