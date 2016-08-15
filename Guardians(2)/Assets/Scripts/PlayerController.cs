@@ -23,8 +23,11 @@ public class PlayerController : MonoBehaviour {
     private float timeElapsed;
     private bool special;
 
+    private GameObject ad;
+
     void Start () 
 	{
+        ad = GameObject.FindWithTag("Finish");
 		verticalSpeed = 0.16f;
 		horizontalSpeed = 0.18f;
 		rb = GetComponent<Rigidbody2D> ();
@@ -77,14 +80,21 @@ public class PlayerController : MonoBehaviour {
 
 	public void SubtractLife()
 	{
-		life--;
-	}
-
-    public void RestoreLife() {
-        if (life != 5) {
-            life = 5;
+        if (life == 1)
+        {
+            ad.GetComponent<PlayAudio>().PlayPlayerDeath();
+            life--;
+        }
+        else
+        {
+            ad.GetComponent<PlayAudio>().PlayPlayerHit();
+            life--;
         }
     }
+
+    public void RestoreLife() {
+            life = 5;
+        }
 
     public void SpeedUp() {
         special = true;

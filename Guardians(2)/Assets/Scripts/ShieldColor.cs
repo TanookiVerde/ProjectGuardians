@@ -20,9 +20,6 @@ public class ShieldColor : MonoBehaviour {
 
     private int state;
 
-    public Sprite red;
-    public Sprite o;
-
 	// Use this for initialization
 	void Start () 
 	{

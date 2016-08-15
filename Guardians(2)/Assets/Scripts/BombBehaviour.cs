@@ -5,20 +5,17 @@ public class BombBehaviour : MonoBehaviour {
 
     public int actualScore = 10;
     private bool played;
+    private int randaudio;
     
 	//acessa componentes
 	private GameManager gm;
 	private ScoreManager scorem;
-	private CoreBehaviour core;
-	private PlayerController player;
     private PoweUpHandler pu;
     public GameObject ad;
 
 	void Start()
 	{
         played = true;
-		core = FindObjectOfType (typeof(CoreBehaviour)) as CoreBehaviour;
-		player = FindObjectOfType (typeof(PlayerController)) as PlayerController;
         pu = FindObjectOfType (typeof(PoweUpHandler)) as PoweUpHandler;
 		gm = FindObjectOfType (typeof(GameManager)) as GameManager;
         ad = GameObject.FindWithTag("Finish");
@@ -28,7 +25,7 @@ public class BombBehaviour : MonoBehaviour {
 	{
         if (transform.position.x < -6.8 && played)
         {
-            ad.GetComponent<AudioSource>().Play();
+            ad.GetComponent<PlayAudio>().PlayPlayerHit();
             played = false;
         }
         if (transform.position.x < -9)
@@ -40,9 +37,6 @@ public class BombBehaviour : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D c)
 	{
-        ad.GetComponent<AudioSource>().Play();
-        Debug.Log(ad.gameObject.tag);
-        Debug.Log(c.gameObject.tag);
         switch(c.gameObject.tag) {
             case "Core1":
                 pu.Break(0);
@@ -80,6 +74,7 @@ public class BombBehaviour : MonoBehaviour {
         }
 		if (c.gameObject.tag == gameObject.tag || c.gameObject.tag == "Omni")
 		{
+            ad.GetComponent<PlayAudio>().PlayLaser();
             pu.generated = false;
             ScoreManager.score += 10;
 			gm.IncreaseBombCounter ();
@@ -89,7 +84,6 @@ public class BombBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D c)
 	{
-        ad.GetComponent<AudioSource>().Play();
         if (c.gameObject.name == "player")
         {
             c.gameObject.GetComponent<PlayerController>().SubtractLife();

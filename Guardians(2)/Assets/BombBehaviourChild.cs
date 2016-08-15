@@ -29,7 +29,6 @@ public class BombBehaviourChild : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        Debug.Log("Trigger");
         switch (c.gameObject.tag)
         {
             case "Core1":
