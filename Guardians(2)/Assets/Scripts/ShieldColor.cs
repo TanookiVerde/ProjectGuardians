@@ -9,7 +9,6 @@ public class ShieldColor : MonoBehaviour {
 		GREEN,
 		BLUE,
         OMNI,
-        FLASHING
 	}
 
 	//Acessa o enum
@@ -20,6 +19,9 @@ public class ShieldColor : MonoBehaviour {
     private float timeElapsed;
 
     private int state;
+
+    public Sprite red;
+    public Sprite o;
 
 	// Use this for initialization
 	void Start () 
@@ -38,27 +40,41 @@ public class ShieldColor : MonoBehaviour {
             timeElapsed += Time.deltaTime;
             if (timeElapsed > 5)
             {
-                if (Time.frameCount % 10 == 0) OmniFlash();
-                else OmniOn();
+                if (timeElapsed > 5 && timeElapsed < 5.5) OmniFlash();
+                if (timeElapsed >= 5.5 && timeElapsed < 6) OmniFlash2();
+                if (timeElapsed >= 6 && timeElapsed < 6.5) OmniFlash();
+                if (timeElapsed >= 6.5 && timeElapsed < 7) OmniFlash2();
+                if (timeElapsed >= 7 && timeElapsed < 7.5) OmniFlash();
+                if (timeElapsed >= 7.5 && timeElapsed < 8) OmniFlash2();
             }
-            if (timeElapsed >= 8) {
+            if (timeElapsed >= 8)
+            {
                 OmniOff();
+            }
+            switch (shieldColor)
+            {
+                case ShieldColorState.RED:
+                    GetComponent<Animator>().Play("shield_red");
+                    break;
+                case ShieldColorState.OMNI:
+                    GetComponent<Animator>().Play("shield_omni");
+                    break;
             }
         }
         else
         {
             ColorChange();
-        }
-            switch (state){
+            switch (state)
+            {
                 case 0:
-                shieldColor = ShieldColorState.RED;
-                break;
+                    shieldColor = ShieldColorState.RED;
+                    break;
                 case 1:
-                shieldColor = ShieldColorState.GREEN;
-                break;
+                    shieldColor = ShieldColorState.GREEN;
+                    break;
                 case 2:
-                shieldColor = ShieldColorState.BLUE;
-                break;
+                    shieldColor = ShieldColorState.BLUE;
+                    break;
 
                 default:
                     break;
@@ -81,10 +97,8 @@ public class ShieldColor : MonoBehaviour {
                     gameObject.tag = "Omni";
                     GetComponent<Animator>().Play("shield_omni");
                     break;
-                case ShieldColorState.FLASHING:
-                    GetComponent<Animator>().Play("shield_flashing");
-                    break;
             }
+        }
     }
 
 	private void ColorChange()
@@ -115,8 +129,8 @@ public class ShieldColor : MonoBehaviour {
     public void OmniOn() {
         omni = true;
         timeElapsed = 0;
+        gameObject.tag = "Omni";
         shieldColor = ShieldColorState.OMNI;
-
     }
     
     public void OmniOff() {
@@ -125,7 +139,10 @@ public class ShieldColor : MonoBehaviour {
     }
 
     public void OmniFlash() {
-        shieldColor = ShieldColorState.FLASHING;
+        shieldColor = ShieldColorState.RED;
+    }
+    public void OmniFlash2() {
+        shieldColor = ShieldColorState.OMNI;
     }
 
 	//Permite saber qual cor esta acionada
