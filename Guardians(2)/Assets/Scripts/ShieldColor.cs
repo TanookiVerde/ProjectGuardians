@@ -8,21 +8,26 @@ public class ShieldColor : MonoBehaviour {
 		RED,
 		GREEN,
 		BLUE,
-        OMNI
+        OMNI,
+        FLASHING
 	}
 
 	//Acessa o enum
 	private ShieldColorState shieldColor;
 
-    private bool omni = false;
+    private bool omni = false, ready;
 
     private float timeElapsed;
+
+    private int state;
 
 	// Use this for initialization
 	void Start () 
 	{
 		shieldColor = ShieldColorState.RED;
         timeElapsed = 0;
+        state = 0;
+        ready = false;
 	}
 
     // Update is called once per frame
@@ -33,6 +38,10 @@ public class ShieldColor : MonoBehaviour {
             timeElapsed += Time.deltaTime;
             if (timeElapsed > 5)
             {
+                if (Time.frameCount % 10 == 0) OmniFlash();
+                else OmniOn();
+            }
+            if (timeElapsed >= 8) {
                 OmniOff();
             }
         }
@@ -40,6 +49,20 @@ public class ShieldColor : MonoBehaviour {
         {
             ColorChange();
         }
+            switch (state){
+                case 0:
+                shieldColor = ShieldColorState.RED;
+                break;
+                case 1:
+                shieldColor = ShieldColorState.GREEN;
+                break;
+                case 2:
+                shieldColor = ShieldColorState.BLUE;
+                break;
+
+                default:
+                    break;
+            }
             switch (shieldColor)
             {
                 case ShieldColorState.RED:
@@ -58,22 +81,34 @@ public class ShieldColor : MonoBehaviour {
                     gameObject.tag = "Omni";
                     GetComponent<Animator>().Play("shield_omni");
                     break;
+                case ShieldColorState.FLASHING:
+                    GetComponent<Animator>().Play("shield_flashing");
+                    break;
             }
     }
 
 	private void ColorChange()
 	{
 		if (Input.GetKey (KeyCode.J)) {
-			shieldColor = ShieldColorState.RED;
+            state = 0;
 		}
 		if (Input.GetKey (KeyCode.K)) {
-			shieldColor = ShieldColorState.GREEN;
+            state = 1;
 		}
 		if (Input.GetKey (KeyCode.L)) {
-			shieldColor = ShieldColorState.BLUE;
+            state = 2;
 		}
         if (Input.GetKey(KeyCode.O)) {
             shieldColor = ShieldColorState.OMNI;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && !ready)
+        {
+            state++;
+            ready = true;
+            if (state >= 3) state -= 3;
+        }
+        if (Input.GetKeyUp(KeyCode.Space)) { 
+                ready = false;
         }
     }
 
@@ -87,6 +122,10 @@ public class ShieldColor : MonoBehaviour {
     public void OmniOff() {
         omni = false;
         shieldColor = ShieldColorState.RED;
+    }
+
+    public void OmniFlash() {
+        shieldColor = ShieldColorState.FLASHING;
     }
 
 	//Permite saber qual cor esta acionada
