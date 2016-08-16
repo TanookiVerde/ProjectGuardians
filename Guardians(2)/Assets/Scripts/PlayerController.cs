@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
 	//controle de velocidade
 	private float verticalSpeed;
 	private float horizontalSpeed;
+	private float direction;
+	private float hDirection;
+	private float vDirection;
 
 	//limites de movimento
 	private float xMin = -6.75f;
@@ -57,9 +60,17 @@ public class PlayerController : MonoBehaviour {
 
 	private void MovementControl()
 	{
-        float hDirection = Input.GetAxis("Horizontal") * horizontalSpeed;
-        float vDirection = Input.GetAxis("Vertical") * verticalSpeed;
-        transform.Translate(hDirection, vDirection, 0);
+		direction = Input.GetAxis ("Horizontal");
+		if (direction >= 0) 
+		{
+			hDirection = Input.GetAxis ("Horizontal") * horizontalSpeed;
+		}
+		else 
+		{
+			hDirection = Input.GetAxis("Horizontal") * horizontalSpeed/2;	
+		}
+        vDirection = Input.GetAxis("Vertical") * verticalSpeed;
+		transform.Translate(hDirection, vDirection, 0);
 		/*if(Input.GetKey(KeyCode.D))
 		{
 			transform.Translate (horizontalSpeed, 0f, 0f);

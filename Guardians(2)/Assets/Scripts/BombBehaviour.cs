@@ -32,7 +32,7 @@ public class BombBehaviour : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        transform.Translate (new Vector3 (-3f, 0f, 0f) * Time.deltaTime);
+        transform.Translate (new Vector3 (-5f, 0f, 0f) * Time.deltaTime);
 	}
 
 	void OnTriggerEnter2D (Collider2D c)
@@ -76,7 +76,7 @@ public class BombBehaviour : MonoBehaviour {
 		{
             ad.GetComponent<PlayAudio>().PlayLaser();
             pu.generated = false;
-            ScoreManager.score += 10;
+            ScoreManager.score += 1000;
 			gm.IncreaseBombCounter ();
             Destroy(gameObject);
         }

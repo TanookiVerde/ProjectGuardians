@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour {
 
-	public void PlayGame()
+	void Update()
 	{
-		SceneManager.LoadScene ("GameState");
+		if (Input.GetKey (KeyCode.Space)) 
+		{
+			SceneManager.LoadScene ("GameState");
+		}
 	}
 }

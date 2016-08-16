@@ -4,7 +4,7 @@ using System.Collections;
 public class HealC : MonoBehaviour
 {
 
-
+	private ScoreManager sm;
     private GameObject c1, c2, c3, c4, c5;
 
     void Start() {
@@ -13,6 +13,7 @@ public class HealC : MonoBehaviour
         c3 = GameObject.Find("Core3");
         c4 = GameObject.Find("Core4");
         c5 = GameObject.Find("Core5");
+		sm = FindObjectOfType (typeof(ScoreManager)) as ScoreManager;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +26,7 @@ public class HealC : MonoBehaviour
             c4.GetComponent<CoreBehaviour>().AddLife();
             c5.GetComponent<CoreBehaviour>().AddLife();
             Destroy(gameObject);
+			sm.AddScore ();
         }
 
     }

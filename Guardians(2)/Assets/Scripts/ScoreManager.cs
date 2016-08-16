@@ -23,4 +23,9 @@ public class ScoreManager : MonoBehaviour
     {
 		textdisplay.text = "Score: " + score;
     }
+
+	public void AddScore()
+	{
+		score += 2000;
+	}
 }

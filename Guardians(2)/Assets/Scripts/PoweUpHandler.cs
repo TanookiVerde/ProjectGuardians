@@ -19,7 +19,7 @@ public class PoweUpHandler : MonoBehaviour
     }
 
     void Update() {
-        if(ScoreManager.score % 100 == 0 && ScoreManager.score != 0 && !generated) {
+        if(ScoreManager.score % 10000 == 0 && ScoreManager.score != 0 && !generated) {
             generated = true;
             GeneratePU();
         }
