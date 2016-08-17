@@ -13,9 +13,11 @@ public class PlayAudio : MonoBehaviour {
     private int clip;
     private PlayerController pc;
     private CoreBehaviour cb;
+    private ScreenFader fader;
 
     // Use this for initialization
     void Start () {
+        fader = FindObjectOfType(typeof(ScreenFader)) as ScreenFader;
         pc = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         AudioSource[] audios = GetComponents<AudioSource>();
         cb = FindObjectOfType(typeof(CoreBehaviour)) as CoreBehaviour;

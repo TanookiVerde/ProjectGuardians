@@ -40,7 +40,6 @@ public class GetScore : MonoBehaviour {
         {
             if (PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("HighScore2"))
             {
-                Debug.Log("2");
                 PlayerPrefs.SetInt("HighScore3", PlayerPrefs.GetInt("HighScore2"));
                 PlayerPrefs.SetInt("HighScore2", score);
                 PlayerPrefs.Save();
@@ -50,7 +49,6 @@ public class GetScore : MonoBehaviour {
             {
                 if (PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("HighScore3"))
                 {
-                    Debug.Log("3");
                     PlayerPrefs.SetInt("HighScore3", score);
                     PlayerPrefs.Save();
                     newhscore = true;

@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\HealC.cs" />
      <Compile Include="Assets\Scripts\HealP.cs" />
      <Compile Include="Assets\Scripts\HighScores.cs" />
+     <Compile Include="Assets\Scripts\LevelChanger.cs" />
      <Compile Include="Assets\Scripts\LifeDisplay.cs" />
      <Compile Include="Assets\Scripts\MainMenuManager.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\PoweUpHandler.cs" />
      <Compile Include="Assets\Scripts\Restart.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
+     <Compile Include="Assets\Scripts\ScreenFader.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\ShieldColor.cs" />
      <Compile Include="Assets\Scripts\ShieldO.cs" />

@@ -11,21 +11,21 @@ public class BombBehaviour : MonoBehaviour {
 	private GameManager gm;
 	private ScoreManager scorem;
     private PoweUpHandler pu;
-    public GameObject ad;
+    public GameObject audioplayer;
 
 	void Start()
 	{
         played = true;
         pu = FindObjectOfType (typeof(PoweUpHandler)) as PoweUpHandler;
 		gm = FindObjectOfType (typeof(GameManager)) as GameManager;
-        ad = GameObject.FindWithTag("Finish");
+        audioplayer = GameObject.FindWithTag("Finish");
     }
 
 	void Update () 
 	{
         if (transform.position.x < -6.8 && played)
         {
-            ad.GetComponent<PlayAudio>().PlayPlayerHit();
+            audioplayer.GetComponent<PlayAudio>().PlayPlayerHit();
             played = false;
         }
         if (transform.position.x < -9)
@@ -74,7 +74,7 @@ public class BombBehaviour : MonoBehaviour {
         }
 		if (c.gameObject.tag == gameObject.tag || c.gameObject.tag == "Omni")
 		{
-            ad.GetComponent<PlayAudio>().PlayLaser();
+            audioplayer.GetComponent<PlayAudio>().PlayLaser();
             pu.generated = false;
             ScoreManager.score += 1000;
 			gm.IncreaseBombCounter ();

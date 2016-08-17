@@ -4,11 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour {
 
+    private ScreenFader sf;
+
+    void Start() {
+        sf = FindObjectOfType(typeof(ScreenFader)) as ScreenFader;
+    }
+
 	void Update()
 	{
 		if (Input.GetKey (KeyCode.Space)) 
 		{
-			SceneManager.LoadScene ("GameState");
+            sf.EndScene(1);
 		}
 	}
 }
