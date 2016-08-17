@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 
 	//vida
 	public int life;
+	public int isHit;
 
 	//acessa componentes
 	private Rigidbody2D rb;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     private GameObject ad;
     private GameObject cmds;
+	private GameObject robo;
 
     void Start () 
 	{
@@ -44,9 +46,11 @@ public class PlayerController : MonoBehaviour {
         special = false;
         played = true;
         paused = true;
+		robo = GameObject.FindGameObjectWithTag("player");
 	}
 	
     void Update() {
+		isHit = 0;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             paused = !paused;
@@ -115,6 +119,7 @@ public class PlayerController : MonoBehaviour {
             ad.GetComponent<PlayAudio>().PlayPlayerHit();
             life--;
         }
+		GetComponent<Animator>().Play("playerHurt");
     }
 
     public void RestoreLife() {
