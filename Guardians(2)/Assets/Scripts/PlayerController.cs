@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             paused = !paused;
             if (paused) {
@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour {
                 Time.timeScale = 1;
                 cmds.SetActive(false);
             }
+        }
+        if (paused)
+        {
+            Time.timeScale = 0;
+            cmds.SetActive(true);
         }
     }
 

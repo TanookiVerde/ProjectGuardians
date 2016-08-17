@@ -40,3 +40,6 @@ C:\Users\Vitor\Desktop\ProjetoGDP\projetoGDP_grupo1\Guardians(2)\Temp\bin\Debug\
 C:\Users\Vitor\Desktop\ProjetoGDP\projetoGDP_grupo1\Guardians(2)\Temp\bin\Debug\UnityEngine.UI.xml
 C:\Users\Vitor\Desktop\ProjetoGDP\projetoGDP_grupo1\Guardians(2)\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Users\Vitor\Desktop\ProjetoGDP\projetoGDP_grupo1\Guardians(2)\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Matheus\Desktop\New folder\projetoGDP_grupo1\Guardians(2)\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Matheus\Desktop\New folder\projetoGDP_grupo1\Guardians(2)\obj\Debug\Assembly-CSharp.dll
+C:\Users\Matheus\Desktop\New folder\projetoGDP_grupo1\Guardians(2)\obj\Debug\Assembly-CSharp.pdb

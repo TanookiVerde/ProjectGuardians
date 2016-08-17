@@ -45,17 +45,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BombBehaviourChild.cs" />
      <Compile Include="Assets\GetScore.cs" />
-     <Compile Include="Assets\PlayAudio.cs" />
      <Compile Include="Assets\Scripts\BombBehaviour.cs" />
+     <Compile Include="Assets\Scripts\BombBehaviourChild.cs" />
      <Compile Include="Assets\Scripts\CoreBehaviour.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HealC.cs" />
      <Compile Include="Assets\Scripts\HealP.cs" />
+     <Compile Include="Assets\Scripts\HighScores.cs" />
      <Compile Include="Assets\Scripts\LifeDisplay.cs" />
      <Compile Include="Assets\Scripts\MainMenuManager.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
+     <Compile Include="Assets\Scripts\PlayAudio.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PoweUpHandler.cs" />
      <Compile Include="Assets\Scripts\Restart.cs" />
