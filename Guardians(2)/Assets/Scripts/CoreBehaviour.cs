@@ -44,11 +44,17 @@ public class CoreBehaviour : MonoBehaviour {
     }
 
     public void GameOver() {
+        Time.timeScale = 0;
         StartCoroutine(Wait());
     }
 
     IEnumerator Wait() {
-        yield return new WaitForSeconds(2);
+        float start = Time.realtimeSinceStartup;
+        float time = 2;
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
         SceneManager.LoadScene("GameOver");
     }
 }

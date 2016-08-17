@@ -76,7 +76,6 @@ public class BombBehaviourChild : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        Debug.Log("Collision");
         if (c.gameObject.name == "player")
         {
             c.gameObject.GetComponent<PlayerController>().SubtractLife();

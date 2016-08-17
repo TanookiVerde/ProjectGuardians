@@ -12,11 +12,13 @@ public class PlayAudio : MonoBehaviour {
     AudioSource[] audios;
     private int clip;
     private PlayerController pc;
+    private CoreBehaviour cb;
 
     // Use this for initialization
     void Start () {
         pc = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         AudioSource[] audios = GetComponents<AudioSource>();
+        cb = FindObjectOfType(typeof(CoreBehaviour)) as CoreBehaviour;
         shieldhit = audios[0];
         explosion1 = audios[1];
         explosion21 = audios[4];
@@ -48,11 +50,11 @@ public class PlayAudio : MonoBehaviour {
     }
     public void PlayPlayerDeath() {
         playerdeath.Play();
-        StartCoroutine(Death());
+        cb.GameOver();
     }
     IEnumerator Death() {
-        yield return new WaitForSeconds(playerdeath.clip.length);
-        pc.life--;
+        yield return new WaitForSeconds(playerdeath.clip.length + 0.8f);
+        cb.GameOver();
     }
     public void PlayPlayerHit() {
         playerhit.Play();

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 	//Controle do spawn de projeteis
 	private float spawnTimer;
 	private float spawnTimerLimit;
-	private int bombCounter;
+	public int bombCounter;
 
 	//Lista da posicao dos spawns
 	public Transform[] spawn;

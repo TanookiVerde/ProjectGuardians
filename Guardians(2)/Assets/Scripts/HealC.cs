@@ -6,6 +6,7 @@ public class HealC : MonoBehaviour
 
 	private ScoreManager sm;
     private GameObject c1, c2, c3, c4, c5;
+    private float timeElapsed;
 
     void Start() {
         c1 = GameObject.Find("Core1");
@@ -14,6 +15,16 @@ public class HealC : MonoBehaviour
         c4 = GameObject.Find("Core4");
         c5 = GameObject.Find("Core5");
 		sm = FindObjectOfType (typeof(ScoreManager)) as ScoreManager;
+        timeElapsed = 0;
+    }
+
+    void Update()
+    {
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed > 15)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)

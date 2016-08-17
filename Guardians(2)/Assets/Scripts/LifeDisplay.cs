@@ -23,7 +23,11 @@ public class LifeDisplay : MonoBehaviour
 
     void Update()
     {
-        life = pc.life;
-        textdisplay.text = "Life: " + life;
+        if (Time.timeScale == 1)
+        {
+            life = pc.life;
+            textdisplay.text = "Life: " + life;
+        }
+        else textdisplay.text = "";
     }
 }
