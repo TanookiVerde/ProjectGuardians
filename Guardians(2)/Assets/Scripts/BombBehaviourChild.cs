@@ -68,7 +68,8 @@ public class BombBehaviourChild : MonoBehaviour
         if (c.gameObject.tag == gameObject.tag || c.gameObject.tag == "Omni")
         {
             pu.generated = false;
-            ScoreManager.score += 10;
+            ScoreManager.score += 1000;
+            pu.pucount++;
             Destroy(transform.parent.gameObject);
             
         }

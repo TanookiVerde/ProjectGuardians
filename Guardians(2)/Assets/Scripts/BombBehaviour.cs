@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BombBehaviour : MonoBehaviour {
 
-    public int actualScore = 10;
     private bool played;
     private int randaudio;
     
@@ -77,6 +76,7 @@ public class BombBehaviour : MonoBehaviour {
             audioplayer.GetComponent<PlayAudio>().PlayLaser();
             pu.generated = false;
             ScoreManager.score += 1000;
+            pu.pucount++;
 			gm.IncreaseBombCounter ();
             Destroy(gameObject);
         }

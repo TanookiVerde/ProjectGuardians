@@ -13,13 +13,16 @@ public class PoweUpHandler : MonoBehaviour
     private float yMax = 3.5f;
     private float posX, posY;
     public bool generated;
+    public int pucount;
 
     void Start() {
         generated = false;
+        pucount = 0;
     }
 
     void Update() {
-        if(ScoreManager.score % 10000 == 0 && ScoreManager.score != 0 && !generated) {
+        if(pucount == 10 && !generated) {
+            pucount = 0;
             generated = true;
             GeneratePU();
         }
