@@ -9,6 +9,7 @@ public class PlayAudio : MonoBehaviour {
     private AudioSource explosion22;
     private AudioSource playerdeath;
     private AudioSource playerhit;
+    private AudioSource fimpu;
     AudioSource[] audios;
     private int clip;
     private PlayerController pc;
@@ -29,28 +30,62 @@ public class PlayAudio : MonoBehaviour {
         explosion22 = audios[5];
         playerdeath = audios[3];
         playerhit = audios[2];
+        fimpu = audios[6];
+
     }
 	
+    public void PlayFim() {
+        fimpu.Play();
+    }
+
 	public void PlayLaser () {
         shieldhit.Play();
 	}
     public void PlayExplosion1() {
         explosion1.Play();
         StartCoroutine(playEngineSound());
-    }
-
-    IEnumerator playEngineSound()
-    {
-        yield return new WaitForSeconds(explosion1.clip.length);
         clip = Random.Range(1, 3);
         if (clip == 1) PlayExplosion21();
         else PlayExplosion22();
     }
+
+    IEnumerator playEngineSound()
+    {
+        float start = Time.realtimeSinceStartup;
+        float time = explosion1.clip.length;
+        fader.EndScene(2);
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
+    }
     public void PlayExplosion21() {
         explosion21.Play();
+        StartCoroutine(e21());
+    }
+    IEnumerator e21()
+    {
+        float start = Time.realtimeSinceStartup;
+        float time = explosion21.clip.length;
+        fader.EndScene(2);
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
     }
     public void PlayExplosion22() {
         explosion22.Play();
+        StartCoroutine(e22());
+    }
+    IEnumerator e22()
+    {
+        float start = Time.realtimeSinceStartup;
+        float time = explosion22.clip.length;
+        fader.EndScene(2);
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
     }
     public void PlayPlayerDeath() {
         lost.dead = true;

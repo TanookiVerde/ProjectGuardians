@@ -16,5 +16,9 @@ public class MainMenuManager : MonoBehaviour {
 		{
             sf.EndScene(2);
 		}
-	}
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+    }
 }

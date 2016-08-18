@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
     private bool special;
     private bool played;
     private bool paused;
+    private bool played2;
 
     private GameObject ad;
     private GameObject cmds;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         timeElapsed = 0;
         special = false;
         played = true;
+        played2 = false;
         paused = true;
 		robo = GameObject.FindGameObjectWithTag("Player");
 	}
@@ -63,6 +65,10 @@ public class PlayerController : MonoBehaviour {
                 cmds.SetActive(false);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
         if (paused)
         {
             Time.timeScale = 0;
@@ -75,7 +81,11 @@ public class PlayerController : MonoBehaviour {
         if (special)
         {
             timeElapsed += Time.deltaTime;
-            if (timeElapsed > 5)
+            if (timeElapsed > 5 && !played2)
+            {
+                ad.GetComponent<PlayAudio>().PlayFim();
+             }
+            if (timeElapsed > 8)
             {
                 SpeedDown();
             }

@@ -20,13 +20,19 @@ public class ShieldColor : MonoBehaviour {
 
     private int state;
 
+    private GameObject ad;
+
+    private bool played;
+
 	// Use this for initialization
 	void Start () 
 	{
-		shieldColor = ShieldColorState.RED;
+        ad = GameObject.FindWithTag("Finish");
+        shieldColor = ShieldColorState.RED;
         timeElapsed = 0;
         state = 0;
         ready = false;
+        played = false;
 	}
 
     // Update is called once per frame
@@ -37,6 +43,11 @@ public class ShieldColor : MonoBehaviour {
             timeElapsed += Time.deltaTime;
             if (timeElapsed > 5)
             {
+                if (!played)
+                {
+                    played = true;
+                    ad.GetComponent<PlayAudio>().PlayFim();
+                }
                 if (timeElapsed > 5 && timeElapsed < 5.5) OmniFlash();
                 if (timeElapsed >= 5.5 && timeElapsed < 6) OmniFlash2();
                 if (timeElapsed >= 6 && timeElapsed < 6.5) OmniFlash();
