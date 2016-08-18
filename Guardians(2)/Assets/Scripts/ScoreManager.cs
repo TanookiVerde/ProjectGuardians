@@ -18,9 +18,14 @@ public class ScoreManager : MonoBehaviour
         // Zera a pontuacao.
         score = 0;
 
+        truescore = 0;
+
         gm = FindObjectOfType(typeof(GameManager)) as GameManager;
     }
 
+    void FixedUpdate() {
+        score++;
+    }
 
     void Update()
     {
@@ -28,14 +33,14 @@ public class ScoreManager : MonoBehaviour
         {
             if (gm.bombCounter != 0)
             {
-                truescore = (score + (Time.frameCount * gm.bombCounter));
+                truescore = score * gm.bombCounter;
                 PlayerPrefs.SetInt("Score", truescore);
                 textdisplay.text = "Score: " + truescore;
             }
             else
             {
-
-                textdisplay.text = "Score: " + (score + (Time.frameCount));
+                truescore = score;
+                textdisplay.text = "Score: " + truescore;
             }
         }
 

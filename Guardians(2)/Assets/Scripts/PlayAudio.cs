@@ -14,6 +14,7 @@ public class PlayAudio : MonoBehaviour {
     private PlayerController pc;
     private CoreBehaviour cb;
     private ScreenFader fader;
+    private LostGame lost;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +22,7 @@ public class PlayAudio : MonoBehaviour {
         pc = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         AudioSource[] audios = GetComponents<AudioSource>();
         cb = FindObjectOfType(typeof(CoreBehaviour)) as CoreBehaviour;
+        lost = FindObjectOfType(typeof(LostGame)) as LostGame;
         shieldhit = audios[0];
         explosion1 = audios[1];
         explosion21 = audios[4];
@@ -51,6 +53,7 @@ public class PlayAudio : MonoBehaviour {
         explosion22.Play();
     }
     public void PlayPlayerDeath() {
+        lost.dead = true;
         playerdeath.Play();
         cb.GameOver();
     }

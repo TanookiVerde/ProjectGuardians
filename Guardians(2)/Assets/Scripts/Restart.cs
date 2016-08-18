@@ -4,11 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour {
 
-	void Update () {
+    private ScreenFader sf;
+
+    void Start()
+    {
+        sf = FindObjectOfType(typeof(ScreenFader)) as ScreenFader;
+    }
+
+    void Update()
+    {
         if (Input.GetKey(KeyCode.R))
         {
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("GameState");
+            sf.EndScene(3);
         }
     }
 }

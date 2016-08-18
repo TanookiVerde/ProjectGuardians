@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour {
 	{
 		if (Input.GetKey (KeyCode.Space)) 
 		{
-            sf.EndScene(1);
+            sf.EndScene(2);
 		}
 	}
 }

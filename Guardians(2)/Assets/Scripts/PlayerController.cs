@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         special = false;
         played = true;
         paused = true;
-		robo = GameObject.FindGameObjectWithTag("player");
+		robo = GameObject.FindGameObjectWithTag("Player");
 	}
 	
     void Update() {
