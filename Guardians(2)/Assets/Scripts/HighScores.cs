@@ -14,7 +14,7 @@ public class HighScores : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         textdisplay = GetComponent<Text>();;
     }
 

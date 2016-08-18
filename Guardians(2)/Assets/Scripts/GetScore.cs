@@ -12,7 +12,7 @@ public class GetScore : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         textdisplay = GetComponent<Text>();
         score = PlayerPrefs.GetInt("Score");
         isHighScore();

@@ -7,9 +7,11 @@ public class CoreBehaviour : MonoBehaviour {
 	public int life;
     private GameObject ad;
     private ScreenFader fader;
+    private LostGame lost;
 
-	void Start()
+    void Start()
 	{
+        lost = FindObjectOfType(typeof(LostGame)) as LostGame;
         fader = FindObjectOfType(typeof(ScreenFader)) as ScreenFader;
         ad = GameObject.FindWithTag("Finish");
         life = 2;
@@ -46,6 +48,7 @@ public class CoreBehaviour : MonoBehaviour {
     }
 
     public void GameOver() {
+        lost.dead = true;
         Time.timeScale = 0;
         StartCoroutine(Wait());
     }

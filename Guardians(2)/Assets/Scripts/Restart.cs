@@ -15,7 +15,7 @@ public class Restart : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.R))
         {
-            sf.EndScene(3);
+            sf.EndScene(2);
         }
     }
 }
