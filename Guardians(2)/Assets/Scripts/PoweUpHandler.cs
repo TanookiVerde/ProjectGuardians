@@ -12,19 +12,27 @@ public class PoweUpHandler : MonoBehaviour
     private float yMin = -3.5f;
     private float yMax = 3.5f;
     private float posX, posY;
-    public bool generated;
+    public bool generated, tgenerated;
     public int pucount;
+    private float timeElapsed;
 
     void Start() {
         generated = false;
+        tgenerated = false;
         pucount = 0;
+        timeElapsed = 0;
     }
 
-    void Update() {
-        if(pucount == 10 && !generated) {
+    void FixedUpdate() {
+        if(pucount == 18 && !generated) {
             pucount = 0;
             generated = true;
             GeneratePU();
+        }
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed >= 30 && !tgenerated) {
+            GenerateToken();
+            tgenerated = true;
         }
     }
 
@@ -47,5 +55,12 @@ public class PoweUpHandler : MonoBehaviour
 
             Instantiate(PowerUps[SelectedPowerUp], new Vector3(posX, posY, 0), Quaternion.identity);
         }
+    }
+
+    public void GenerateToken() {
+        posX = Random.Range(xMax, 2);
+        timeElapsed = 0;
+        tgenerated = false;
+        Instantiate(PowerUps[5], new Vector3(posX, -4, -2), Quaternion.identity);
     }
 }

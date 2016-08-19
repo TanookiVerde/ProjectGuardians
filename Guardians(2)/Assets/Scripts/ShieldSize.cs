@@ -25,7 +25,8 @@ public class ShieldSize : MonoBehaviour {
             }
 
             if (timeElapsed > 8)
-            {   
+            {
+                timeElapsed = 0;
                 DecreaseSize();
             }
         }

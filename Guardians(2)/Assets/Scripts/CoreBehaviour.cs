@@ -6,13 +6,11 @@ public class CoreBehaviour : MonoBehaviour {
 
 	public int life;
     private GameObject ad;
-    private ScreenFader fader;
     private LostGame lost;
 
     void Start()
 	{
         lost = FindObjectOfType(typeof(LostGame)) as LostGame;
-        fader = FindObjectOfType(typeof(ScreenFader)) as ScreenFader;
         ad = GameObject.FindWithTag("Finish");
         life = 2;
 	}
@@ -56,7 +54,6 @@ public class CoreBehaviour : MonoBehaviour {
     IEnumerator Wait() {
         float start = Time.realtimeSinceStartup;
         float time = 3;
-        fader.EndScene(2);
         while (Time.realtimeSinceStartup < start + time)
         {
             yield return null;

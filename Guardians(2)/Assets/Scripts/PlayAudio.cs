@@ -9,6 +9,7 @@ public class PlayAudio : MonoBehaviour {
     private AudioSource explosion22;
     private AudioSource playerdeath;
     private AudioSource playerhit;
+    private AudioSource token;
     private AudioSource fimpu;
     AudioSource[] audios;
     private int clip;
@@ -31,9 +32,13 @@ public class PlayAudio : MonoBehaviour {
         playerdeath = audios[3];
         playerhit = audios[2];
         fimpu = audios[6];
-
+        token = audios[7];
     }
 	
+    public void PlayToken() {
+        token.Play();
+    }
+
     public void PlayFim() {
         fimpu.Play();
     }

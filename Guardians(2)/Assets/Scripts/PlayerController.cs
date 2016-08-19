@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour {
         cmds = GameObject.FindGameObjectWithTag("Commands");
         cmds.SetActive(false);
         ad = GameObject.FindWithTag("Finish");
-		verticalSpeed = 0.16f;
-		horizontalSpeed = 0.18f;
+		verticalSpeed = 0.2f;
+		horizontalSpeed = 0.22f;
 		rb = GetComponent<Rigidbody2D> ();
 		life = 5;
         timeElapsed = 0;
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour {
 		else 
 		{
 			hDirection = Input.GetAxis("Horizontal") * horizontalSpeed/1.5f;
-            vDirection = Input.GetAxis("Vertical") * verticalSpeed/1.5f;
+            vDirection = Input.GetAxis("Vertical") * verticalSpeed/1.3f;
         }
 		transform.Translate(hDirection, vDirection, 0);
 	}
@@ -138,13 +138,13 @@ public class PlayerController : MonoBehaviour {
 
     public void SpeedUp() {
         special = true;
-        verticalSpeed += 0.2f;
-        horizontalSpeed += 0.2f;
+        verticalSpeed += 0.12f;
+        horizontalSpeed += 0.12f;
     }
 
     public void SpeedDown() {
-        verticalSpeed -= 0.2f;
-        horizontalSpeed -= 0.2f;
+        verticalSpeed -= 0.12f;
+        horizontalSpeed -= 0.12f;
         special = false;
     }
 }

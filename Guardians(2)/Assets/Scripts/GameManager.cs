@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
 	//Lista de Bombas
 	public GameObject[] bombPrefab;
+    public GameObject background;
 
 	private int selectedSpawn;
     private int selectedBomb;
@@ -39,9 +40,16 @@ public class GameManager : MonoBehaviour {
 		spawnTimer += Time.deltaTime;
 		if (spawnTimer > spawnTimerLimit) 
 		{
-			selectedBomb = Random.Range (0, 3);
-			selectedSpawn = Random.Range (0, 5);
-			Instantiate (bombPrefab[selectedBomb], spawn [selectedSpawn].position, spawn [selectedSpawn].rotation);
+            if (ScoreManager.score <= 20000)
+            {
+                selectedBomb = Random.Range(0, 3);
+            }
+            else 
+            {
+                selectedBomb = Random.Range(0, 6);
+            }
+            selectedSpawn = Random.Range(0, 5);
+            Instantiate (bombPrefab[selectedBomb], spawn [selectedSpawn].position, spawn [selectedSpawn].rotation);
 			spawnTimer = 0;
 		} 
 	}
@@ -49,5 +57,12 @@ public class GameManager : MonoBehaviour {
 	public void IncreaseBombCounter()
 	{
 		bombCounter++;
+        if (ScoreManager.score >= 10000)
+        { 
+            if (ScoreManager.score >= 20000)
+                background.GetComponent<AudioSource>().pitch = 1.4f;
+            else background.GetComponent<AudioSource>().pitch = 1.2f;
+        }
+        
 	}
 }

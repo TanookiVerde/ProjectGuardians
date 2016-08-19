@@ -24,24 +24,22 @@ public class ScoreManager : MonoBehaviour
     }
 
     void FixedUpdate() {
-        score++;
+        if (Time.frameCount % 4 == 0)
+        {
+            if (gm.bombCounter == 0)
+                score++;
+            else score += gm.bombCounter;
+        }
     }
 
     void Update()
     {
         if (Time.timeScale == 1)
         {
-            if (gm.bombCounter != 0)
-            {
-                truescore = score * gm.bombCounter;
+
+                truescore = score;
                 PlayerPrefs.SetInt("Score", truescore);
                 textdisplay.text = "Score: " + truescore;
-            }
-            else
-            {
-                truescore = score;
-                textdisplay.text = "Score: " + truescore;
-            }
         }
 
         else textdisplay.text = "";
@@ -49,6 +47,11 @@ public class ScoreManager : MonoBehaviour
 
 	public void AddScore()
 	{
-		score += 2000;
+		score += 100;
 	}
+    
+    public void AddScoreBig()
+    {
+        score += 1000;
+    }
 }

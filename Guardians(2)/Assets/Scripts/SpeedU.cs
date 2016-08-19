@@ -18,6 +18,7 @@ public class SpeedU : MonoBehaviour
     void Update() {
         timeElapsed += Time.deltaTime;
         if (timeElapsed > 15) {
+            timeElapsed = 0;
             Destroy(gameObject);
         }
     }

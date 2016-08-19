@@ -11,9 +11,11 @@ public class BombBehaviour : MonoBehaviour {
 	private ScoreManager scorem;
     private PoweUpHandler pu;
     public GameObject audioplayer;
+    private ScoreManager sm;
 
 	void Start()
 	{
+        sm = FindObjectOfType(typeof(ScoreManager)) as ScoreManager;
         played = true;
         pu = FindObjectOfType (typeof(PoweUpHandler)) as PoweUpHandler;
 		gm = FindObjectOfType (typeof(GameManager)) as GameManager;
@@ -31,7 +33,7 @@ public class BombBehaviour : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        transform.Translate (new Vector3 (-5f, 0f, 0f) * Time.deltaTime);
+        transform.Translate (new Vector3 (-8f, 0f, 0f) * Time.deltaTime);
 	}
 
 	void OnTriggerEnter2D (Collider2D c)
@@ -75,7 +77,7 @@ public class BombBehaviour : MonoBehaviour {
 		{
             audioplayer.GetComponent<PlayAudio>().PlayLaser();
             pu.generated = false;
-            ScoreManager.score += 1000;
+            sm.AddScore();
             pu.pucount++;
 			gm.IncreaseBombCounter ();
             Destroy(gameObject);

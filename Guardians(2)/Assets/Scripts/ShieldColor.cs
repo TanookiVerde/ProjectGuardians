@@ -57,6 +57,7 @@ public class ShieldColor : MonoBehaviour {
             }
             if (timeElapsed >= 8)
             {
+                timeElapsed = 0;
                 OmniOff();
             }
             switch (shieldColor)
