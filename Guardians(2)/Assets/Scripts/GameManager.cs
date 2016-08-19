@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 		spawnTimer += Time.deltaTime;
 		if (spawnTimer > spawnTimerLimit) 
 		{
-            if (ScoreManager.score <= 20000)
+            if (ScoreManager.score <= 13000)
             {
                 selectedBomb = Random.Range(0, 3);
             }
@@ -57,9 +57,9 @@ public class GameManager : MonoBehaviour {
 	public void IncreaseBombCounter()
 	{
 		bombCounter++;
-        if (ScoreManager.score >= 10000)
+        if (ScoreManager.score >= 15000)
         { 
-            if (ScoreManager.score >= 20000)
+            if (ScoreManager.score >= 30000)
                 background.GetComponent<AudioSource>().pitch = 1.4f;
             else background.GetComponent<AudioSource>().pitch = 1.2f;
         }

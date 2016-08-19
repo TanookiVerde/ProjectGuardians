@@ -5,12 +5,11 @@ public class BombBehaviourSpecial : MonoBehaviour {
 
     private bool played;
     private int randaudio, newcolor;
-    private float timeElapsed;
+    private float timeElapsed, timestart, time, start;
     private string newcolorname;
 
     //acessa componentes
     private GameManager gm;
-    private ScoreManager scorem;
     private PoweUpHandler pu;
     public GameObject audioplayer;
     private ScoreManager sm;
@@ -27,6 +26,9 @@ public class BombBehaviourSpecial : MonoBehaviour {
         generated = false;
         timeElapsed = 0;
         newcolor = 0;
+        timestart = Time.time;
+        start = Time.realtimeSinceStartup;
+        time = 0.7f;
     }
 
     void FixedUpdate()
@@ -41,9 +43,7 @@ public class BombBehaviourSpecial : MonoBehaviour {
             Destroy(gameObject);
         }
         transform.Translate(new Vector3(-8f, 0f, 0f) * Time.deltaTime);
-
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed > 0.8 && generated)
+        if (Time.realtimeSinceStartup > start + time && !generated)
         {
             ChangeColor();
         }
@@ -111,6 +111,7 @@ public class BombBehaviourSpecial : MonoBehaviour {
     {
         newcolor = Random.Range(1, 4);
         generated = true;
+        timeElapsed = 0;
         switch(newcolor)
         {
             case 1:
